@@ -1,12 +1,13 @@
-import { useState } from 'react'
+// import { useState } from 'react'
 import './App.css'
+import Navbar from './pages/Navbar'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [count, setCount] = useState(0)
 
   return (
     <>
-      
+      <Navbar></Navbar>
     </>
   )
 }
