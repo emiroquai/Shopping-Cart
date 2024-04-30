@@ -4,6 +4,8 @@
   font-family: "Quicksand", sans-serif;;
   padding: 0;
   margin: 0;
+  height: 100vh;
+  width: 100vw;
 }
 
 .navbar{
@@ -28,4 +30,23 @@ h1, h2, h3 {
 
 .svg {
   height: 100%;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url(assets/Consumer-Electronics-L.jpeg);
+  height: 100vh;
+  padding-top: 150px;
+  color: aliceblue;
+}
+  
+.linkButton {
+  display: flex;
+  background-color: black;
+  height: 50px;
+  width: 150px;
+  justify-content: center;  
+  align-items: center;
 }
