@@ -1,5 +1,6 @@
 import "../styles/Shop.css";
 import { useState, useEffect } from "react";
+import ProductCard from "../components/ProductCard";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
@@ -30,16 +31,15 @@ const Shop = () => {
         {loading ? (
           <p>Loading...</p>
         ) : (
-          <ul>
-          {products.map(product => (
-            <li key={product.id}>
-              <h3>{product.title}</h3>
-              <p>{product.description}</p>
-              <img src={product.image} alt={product.title} />
-              <p>Price: ${product.price}</p>
-            </li>
-          ))}
-        </ul>
+          products.map(product => (
+            <ProductCard
+              key={product.id}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              category={product.category}
+            />
+          ))
         )}
       </div>
     </div>
