@@ -2,8 +2,11 @@ import Icon from '@mdi/react';
 import { mdiCartHeart } from '@mdi/js';
 import { mdiBasketOutline } from '@mdi/js';
 import { Link } from 'react-router-dom';
+import "../styles/Navbar.css";
+import PropTypes from 'prop-types';
 
-const Navbar = () => {
+const Navbar = ({ cart }) => {
+
   return (
     <header>
       <nav className="navbar">
@@ -19,11 +22,21 @@ const Navbar = () => {
         <div className="navbarRight">
           <Link to="cart" className="cartNav">
             <Icon path={mdiBasketOutline} size={1.25} />
+            {cart.length > 0 &&
+              <div className="cartCount">
+                <p>{cart.length}</p>              
+              </div>
+            } 
           </Link>
         </div>
       </nav>
     </header>
   )
 }
+
+Navbar.propTypes = {
+  cart: PropTypes.array.isRequired
+};
+
 
 export default Navbar;
