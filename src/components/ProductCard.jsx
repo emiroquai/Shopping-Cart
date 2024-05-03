@@ -1,13 +1,11 @@
 import "../styles/ProductCard.css"
 import { useState } from "react";
 import PropTypes from 'prop-types';
+import { useOutletContext } from "react-router-dom";
 
-const ProductCard = ({ 
-  title, 
-  price, 
-  category, 
-  image, }) => {
+const ProductCard = ({ product }) => {
     const [quantity, setQuantity] = useState(1);
+    const [cart, setCart] = useOutletContext();
 
     const handleIncreaseQuantity = () => {
       setQuantity(quantity + 1);
@@ -18,36 +16,37 @@ const ProductCard = ({
         setQuantity(quantity - 1);
       }
     };
-  
-    const handleAddToCart = () => {
-      // Add logic to add the product to the cart
-      console.log(`Added ${quantity} ${title} to cart`);
-    };
+
+    const handleAddToCart = (product, quantity) => {
+      if (quantity > 0) {
+        let toAdd = []
+        for (let i = 0; i < quantity; i++) {
+          toAdd.push(product)
+        }
+        setCart([...cart, ...toAdd])
+      }
+  };
   
     return (
       <div className="productCard">
-        <img src={image} alt={title} />
-        <h4>{title}</h4>
-        <p>{category}</p>
-        <h4 className="price">${price}</h4>
+        <img src={product.image} alt={product.title} />
+        <h4>{product.title}</h4>
+        <p>{product.category}</p>
+        <h4 className="price">${product.price}</h4>
         <div className="cardBottom">
           <div className="quantityControl">
             <button className="quantityBtn" onClick={handleDecreaseQuantity}>-</button>
             <input className="quantity" type="text" value={quantity} readOnly />
             <button className="quantityBtn" onClick={handleIncreaseQuantity}>+</button>
           </div>
-          <button className="addToCartBtn" onClick={handleAddToCart}>Add to Cart</button>
+          <button className="addToCartBtn" onClick={() => {handleAddToCart(product, quantity)}}>Add to Cart</button>
         </div>
       </div>
     );
   };
 
   ProductCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
-    category: PropTypes.string.isRequired,
-    image: PropTypes.string.isRequired,
+    product: PropTypes.object.isRequired
   };
 
 export default ProductCard;

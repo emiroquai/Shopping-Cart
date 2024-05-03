@@ -17,7 +17,9 @@ const Navbar = () => {
           </Link>
         </div>
         <div className="navbarRight">
-          <Icon path={mdiBasketOutline} size={1.25} />
+          <Link to="cart" className="cartNav">
+            <Icon path={mdiBasketOutline} size={1.25} />
+          </Link>
         </div>
       </nav>
     </header>
