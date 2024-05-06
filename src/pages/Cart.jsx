@@ -9,16 +9,6 @@ const Cart = () => {
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
 
-  const updateSubtotal = () => {
-    let newSubtotal = subtotal;
-    cart.forEach(product => {
-      let price = product.price * product.quantity;
-      newSubtotal += price;
-    });
-    setSubtotal(newSubtotal);
-    setTotal(newSubtotal + 5);
-  }
-
   const handleDeleteProduct = (product) => {
     let newCart = [...cart];
     const index = newCart.findIndex(cartItem => cartItem.id === product.id);
@@ -27,6 +17,15 @@ const Cart = () => {
   }
 
   useEffect(() => {
+    const updateSubtotal = () => {
+      let newSubtotal = 0;
+      cart.forEach(product => {
+        let price = product.price * product.quantity;
+        newSubtotal += price;
+      });
+      setSubtotal(newSubtotal);
+      setTotal(newSubtotal + 5);
+    }
     updateSubtotal();
   }, [cart]);
 
