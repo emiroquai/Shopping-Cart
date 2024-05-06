@@ -22,7 +22,7 @@ const ProductCard = ({ product }) => {
         let newCart = [...cart];
         const index = newCart.findIndex(cartItem => cartItem.id === product.id);
         if (index !== -1) {
-          newCart[index] = { ...newCart[index], quantity: quantity };
+          newCart[index] = { ...newCart[index], quantity: newCart[index].quantity + quantity };
         } else {
           product.quantity = quantity;
           newCart.push(product);
