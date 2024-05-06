@@ -48,13 +48,15 @@ const Cart = () => {
                       <h4>{product.title}</h4>
                       <p>${product.price}</p>
                     </div>
-                    <p>Qty: {product.quantity}</p>
+                    <div className="quantityControl">
+                      <p>Qty: {product.quantity}</p>
+                      <button
+                        className="delete"
+                        onClick={() => { handleDeleteProduct(product) }}>
+                        <Icon path={mdiDelete} size={1.25} />
+                      </button>
+                    </div>
                   </div>
-                  <button 
-                    className="delete" 
-                    onClick={() => { handleDeleteProduct(product) }}>
-                    <Icon path={mdiDelete} size={1.25} />
-                  </button>
                 </li>
               ))}
             </ul>
