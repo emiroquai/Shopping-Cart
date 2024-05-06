@@ -19,11 +19,15 @@ const ProductCard = ({ product }) => {
 
     const handleAddToCart = (product, quantity) => {
       if (quantity > 0) {
-        let toAdd = []
-        for (let i = 0; i < quantity; i++) {
-          toAdd.push(product)
+        let newCart = [...cart];
+        const index = newCart.findIndex(cartItem => cartItem.id === product.id);
+        if (index !== -1) {
+          newCart[index] = { ...newCart[index], quantity: quantity };
+        } else {
+          product.quantity = quantity;
+          newCart.push(product);
         }
-        setCart([...cart, ...toAdd])
+        setCart(newCart);  
       }
   };
   
