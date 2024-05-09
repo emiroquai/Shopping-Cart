@@ -54,7 +54,7 @@ const Cart = () => {
                       <button
                         className="delete"
                         onClick={() => { handleDeleteProduct(product) }}>
-                        <Icon path={mdiDelete} size={1.25} />
+                        <Icon path={mdiDelete} size={1} />
                       </button>
                     </div>
                   </div>

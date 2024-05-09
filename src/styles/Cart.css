@@ -71,4 +71,10 @@ ul {
 .delete {
   background: none;
   color: inherit;
+  position: relative;
+  top: 2px;
+}
+
+.quantityControl {
+  align-items: center;
 }
