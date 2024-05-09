@@ -8,6 +8,7 @@ const Cart = () => {
   const [cart, setCart] = useOutletContext();
   const [subtotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
+  const shippingCost = 5;
 
   const handleDeleteProduct = (product) => {
     let newCart = [...cart];
@@ -24,7 +25,7 @@ const Cart = () => {
         newSubtotal += price;
       });
       setSubtotal(newSubtotal);
-      setTotal(newSubtotal + 5);
+      setTotal(newSubtotal + shippingCost);
     }
     updateSubtotal();
   }, [cart]);
@@ -68,7 +69,7 @@ const Cart = () => {
               </div>
               <div className="shipping">
                 <h4>Shipping</h4>
-                <p>$5</p>
+                <p>${shippingCost}</p>
               </div>
               <div className="total">
                 <h4>Total</h4>
